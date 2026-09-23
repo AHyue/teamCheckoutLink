@@ -26,7 +26,7 @@ Session / `accessToken` 只在页面内存中使用。普通表单偏好保存�
 
 ### 联系方式
 
-请通过项目仓库联系维护者：<https://github.com/AHyue/teamCheckoutLink>。商店发布前需将本政策放在商店审核者和用户无需授权即可访问的公开网址。
+如需联系维护者，请发送邮件至 [yuehu4298@gmail.com](mailto:yuehu4298@gmail.com)，也可通过项目仓库联系：<https://github.com/AHyue/teamCheckoutLink>。商店发布前需将本政策放在商店审核者和用户无需授权即可访问的公开网址。
 
 ## English
 
@@ -50,4 +50,4 @@ Session / `accessToken` values are used only in page memory. Form preferences ar
 
 ### Contact
 
-Contact the maintainer through the project repository: <https://github.com/AHyue/teamCheckoutLink>. Before store submission, this policy must be hosted at a public URL that reviewers and users can access without authorization.
+To contact the maintainer, email [yuehu4298@gmail.com](mailto:yuehu4298@gmail.com) or use the project repository: <https://github.com/AHyue/teamCheckoutLink>. Before store submission, this policy must be hosted at a public URL that reviewers and users can access without authorization.
