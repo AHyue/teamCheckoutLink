@@ -1,5 +1,9 @@
 # teamCheckoutLink
 
+[简体中文](README.md) | [English](README.en.md)
+
+![teamCheckoutLink 界面截图](assets/teamCheckoutLink.png)
+
 一个无需服务器的浏览器扩展。访问支持的官网页面时，它会显示可拖动的悬浮面板，使用当前登录会话或用户手动提供的 Session access token 提交团队结账参数，并显示官方托管结账链接。
 
 ## 支持的浏览器
@@ -79,5 +83,8 @@ teamCheckoutLink/
 ├─ page-bridge.js
 ├─ background.js
 ├─ build.ps1
-└─ README.md
+├─ README.md
+├─ README.en.md
+└─ assets/
+   └─ teamCheckoutLink.png
 ```
