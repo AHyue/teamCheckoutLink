@@ -55,6 +55,8 @@ Team Checkout Link is an open-source project for learning and discussion and for
 
 ## Privacy and limitations
 
+See the full [Privacy Policy](PRIVACY.md).
+
 - Automatically retrieved or manually entered `accessToken` values stay in page memory. They are not sent to the extension popup or written to extension storage. Turning off Manual Session or closing the floating panel clears the entered value.
 - The extension stores workspace, seat, interval, country, promo, panel position, and panel visibility preferences.
 - Regional prices are read from the same-origin official pricing configuration endpoint at `chatgpt.com/backend-api/checkout_pricing_config/configs/{country code}`. The public exchange-rate endpoint is `open.er-api.com`. Price data is cached in page memory and only refreshed when the user selects **Refresh prices**; it is not written to extension storage.

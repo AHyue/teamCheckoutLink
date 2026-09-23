@@ -57,6 +57,8 @@ Team Checkout Link 是开源交流学习项目，供合法学习和个人使用�
 
 ## 隐私与限制
 
+完整隐私政策见 [PRIVACY.md](PRIVACY.md)。
+
 - 自动读取或手动粘贴的 `accessToken` 只保留在当前网页内存中，不会发送给扩展弹窗，也不会写入扩展存储。关闭手动模式或悬浮面板会清除手动输入。
 - 扩展只保存工作区、席位、地区、货币和优惠码等表单偏好。
 - 地区参考表从官网同源价格配置地址读取数据，并从 `open.er-api.com` 读取公开汇率；首次打开后缓存在当前页面内存中，仅在用户点击“刷新价格”时重新请求，不写入扩展存储。
@@ -78,6 +80,7 @@ teamCheckoutLink/
 ├─ LICENSE
 ├─ README.md
 ├─ README.en.md
+├─ PRIVACY.md
 ├─ manifest.json
 ├─ manifest.firefox.json
 ├─ popup.html
