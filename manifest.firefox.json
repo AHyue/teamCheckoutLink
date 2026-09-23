@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Team Long Link",
+  "version": "1.0.0",
+  "description": "使用当前 ChatGPT 登录会话或手动 Session 生成团队结账链接。",
+  "action": {
+    "default_title": "Team Long Link",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "clipboardRead"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://open.er-api.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["page-bridge.js"],
+      "matches": ["https://chatgpt.com/*"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "team-long-link@example.local",
+      "strict_min_version": "109.0"
+    }
+  }
+}

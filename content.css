@@ -1,0 +1,604 @@
+#tll-root,
+#tll-root * {
+  box-sizing: border-box;
+}
+
+#tll-root[hidden],
+#tll-root [hidden] {
+  display: none !important;
+}
+
+#tll-root {
+  position: fixed;
+  z-index: 2147483646;
+  top: 78px;
+  right: 20px;
+  width: 390px;
+  max-width: calc(100vw - 24px);
+  color: #172033;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#tll-root .tll-panel {
+  overflow: visible;
+  border: 1px solid #c4cdea;
+  border-radius: 14px;
+  background: #f5f7ff;
+  box-shadow: 0 18px 50px rgb(35 52 110 / 24%);
+}
+
+#tll-root.tll-dragging,
+#tll-root.tll-dragging * {
+  user-select: none !important;
+}
+
+#tll-root .tll-header {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 13px 13px 0 0;
+  background: linear-gradient(135deg, #6387ef, #3f63ce);
+  padding: 9px 10px;
+  color: #fff;
+  cursor: move;
+  touch-action: none;
+}
+
+#tll-root .tll-logo {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 15%);
+  font-weight: 850;
+}
+
+#tll-root .tll-heading {
+  min-width: 0;
+  flex: 1;
+}
+
+#tll-root .tll-heading strong,
+#tll-root .tll-heading span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#tll-root .tll-heading strong { font-size: 15px; }
+#tll-root .tll-heading span { margin-top: 2px; color: rgb(255 255 255 / 72%); font-size: 10px; }
+
+#tll-root .tll-header-actions { display: flex; gap: 5px; }
+
+#tll-root .tll-icon-button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  min-height: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 13%);
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  font: 700 17px/1 system-ui, sans-serif;
+}
+
+#tll-root .tll-icon-button:hover { background: rgb(255 255 255 / 24%); }
+
+#tll-root .tll-body {
+  max-height: calc(100vh - 110px);
+  max-height: calc(100dvh - 110px);
+  overflow: auto;
+  border-radius: 0 0 14px 14px;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+#tll-root.tll-collapsed { width: 270px; }
+#tll-root.tll-collapsed .tll-header { border-radius: 13px; }
+#tll-root.tll-collapsed .tll-body { display: none; }
+
+#tll-root .tll-form { padding: 15px 15px 12px; }
+
+#tll-root .tll-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+#tll-root .tll-field { min-width: 0; margin-bottom: 11px; }
+
+#tll-root label {
+  display: block;
+  margin: 0 0 5px;
+  color: #34405f;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+#tll-root label span { color: #7e88a3; font-weight: 500; }
+
+#tll-root input,
+#tll-root select,
+#tll-root textarea,
+#tll-root button {
+  font-family: inherit;
+}
+
+#tll-root input,
+#tll-root select,
+#tll-root textarea {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #c7cfea;
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px 9px;
+  color: #172033;
+  font-size: 13px;
+  outline: none;
+}
+
+#tll-root input:focus,
+#tll-root select:focus,
+#tll-root textarea:focus {
+  border-color: #5b7ce6;
+  box-shadow: 0 0 0 3px rgb(91 124 230 / 16%);
+}
+
+#tll-root .tll-clearable-input { display: flex; gap: 6px; }
+#tll-root .tll-clearable-input input { min-width: 0; flex: 1; }
+
+#tll-root .tll-promo-paste,
+#tll-root .tll-clear-button,
+#tll-root .tll-session-clear {
+  min-width: 48px;
+  border: 1px solid #c2cbe2;
+  border-radius: 8px;
+  background: #fff;
+  color: #40506f;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+#tll-root .tll-promo-paste:hover,
+#tll-root .tll-clear-button:hover,
+#tll-root .tll-session-clear:hover { background: #eef2ff; color: #365ac7; }
+
+#tll-root .tll-search { position: relative; }
+#tll-root .tll-search input { padding-right: 37px; }
+
+#tll-root .tll-country-price {
+  margin: -4px 0 10px;
+  border-left: 3px solid #6c88df;
+  border-radius: 0 6px 6px 0;
+  background: #edf2ff;
+  padding: 6px 8px;
+  color: #53617d;
+  font-size: 10px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+#tll-root .tll-country-toggle {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 35px;
+  height: 36px;
+  border: 0;
+  border-left: 1px solid #d7dced;
+  border-radius: 0 7px 7px 0;
+  background: #f7f8fc;
+  color: #66718f;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#tll-root .tll-country-dropdown {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 5px);
+  right: 0;
+  left: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #bdc7e5;
+  border-radius: 9px;
+  background: #fff;
+  padding: 5px;
+  box-shadow: 0 12px 26px rgb(42 57 108 / 18%);
+}
+
+#tll-root .tll-country-option {
+  display: grid;
+  width: 100%;
+  min-height: 40px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 6px;
+  background: #fff;
+  padding: 7px 8px;
+  color: #293653;
+  cursor: pointer;
+  text-align: left;
+}
+
+#tll-root .tll-country-option strong {
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#tll-root .tll-country-option span { color: #74809b; font-size: 10px; font-weight: 650; }
+#tll-root .tll-country-option:hover,
+#tll-root .tll-country-option.tll-active { background: #e9efff; color: #365ac7; }
+#tll-root .tll-country-empty { margin: 0; padding: 11px 8px; color: #7b859e; font-size: 11px; text-align: center; }
+
+#tll-root .tll-currency {
+  background: #eef1f8;
+  color: #67718b;
+  cursor: not-allowed;
+}
+
+#tll-root .tll-session-box {
+  margin: 0 0 11px;
+  border: 1px solid #d6ddef;
+  border-radius: 9px;
+  background: #f8faff;
+}
+
+#tll-root .tll-session-toggle {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+#tll-root .tll-session-toggle > span { min-width: 0; }
+#tll-root .tll-session-toggle strong,
+#tll-root .tll-session-toggle small { display: block; }
+#tll-root .tll-session-toggle strong { color: #34405f; font-size: 11px; }
+#tll-root .tll-session-toggle small { margin-top: 2px; color: #7e88a3; font-size: 9px; font-weight: 500; }
+
+#tll-root .tll-session-toggle input {
+  width: 36px;
+  min-height: 20px;
+  height: 20px;
+  flex: 0 0 36px;
+  margin: 0;
+  accent-color: #5578e6;
+  cursor: pointer;
+}
+
+#tll-root .tll-session-content {
+  border-top: 1px solid #e0e5f2;
+  padding: 9px 10px 10px;
+}
+
+#tll-root .tll-session-content .tll-session-guide {
+  margin: 0 1px 6px;
+  color: #53617d;
+}
+
+#tll-root .tll-session-source {
+  margin-bottom: 9px;
+  border: 1px solid #d6ddef;
+  border-radius: 8px;
+  background: #fff;
+  padding: 7px;
+}
+
+#tll-root .tll-session-source > code {
+  display: block;
+  overflow: hidden;
+  color: #365ac7;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#tll-root .tll-session-source-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 7px;
+}
+
+#tll-root .tll-session-source-actions button {
+  min-height: 30px;
+  border: 1px solid #bfc9e6;
+  border-radius: 7px;
+  background: #eef2ff;
+  color: #365ac7;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+#tll-root .tll-session-source-actions button:hover { background: #e2e9ff; }
+
+#tll-root .tll-session-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  margin: 0 0 6px;
+}
+
+#tll-root .tll-session-actions button {
+  min-width: 48px;
+  min-height: 30px;
+  border: 1px solid #c2cbe2;
+  border-radius: 8px;
+  background: #fff;
+  color: #40506f;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+#tll-root .tll-session-actions button:hover { background: #eef2ff; color: #365ac7; }
+#tll-root .tll-session-value { display: block; width: 100%; }
+
+
+#tll-root .tll-session-content p {
+  margin: 6px 1px 0;
+  color: #7c859d;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+#tll-root .tll-session-content code { font-family: Consolas, monospace; }
+
+#tll-root .tll-primary,
+#tll-root .tll-secondary {
+  min-height: 40px;
+  border: 1px solid #3f62cf;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+#tll-root .tll-primary { background: #5578e6; color: #fff; }
+#tll-root .tll-primary:hover { background: #4165d2; }
+#tll-root .tll-primary:disabled { cursor: wait; opacity: .6; }
+#tll-root .tll-generate { width: 100%; }
+#tll-root .tll-secondary { border-color: #c2cbe2; background: #fff; color: #2e3955; }
+
+#tll-root .tll-price-reference {
+  border-top: 1px solid #dde2f0;
+  background: #fff;
+}
+
+#tll-root .tll-price-toggle {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 0;
+  background: #f7f9ff;
+  padding: 10px 15px;
+  color: #26375f;
+  cursor: pointer;
+  text-align: left;
+}
+
+#tll-root .tll-price-toggle:hover { background: #eef2ff; }
+#tll-root .tll-price-toggle span { font-size: 12px; font-weight: 800; }
+#tll-root .tll-price-toggle small { color: #4165d2; font-size: 10px; font-weight: 750; white-space: nowrap; }
+#tll-root .tll-price-toggle b { display: inline-block; min-width: 12px; font-size: 13px; text-align: center; }
+
+#tll-root .tll-price-modal {
+  position: absolute;
+  z-index: 2147483647;
+  top: 0;
+  right: calc(100% + 10px);
+  width: min(480px, calc(100vw - 420px));
+  height: 100%;
+  pointer-events: none;
+}
+
+#tll-root .tll-price-modal[hidden] { display: none !important; }
+
+#tll-root .tll-price-modal-backdrop {
+  display: none;
+}
+
+#tll-root .tll-price-dialog {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #b9c5e8;
+  border-radius: 14px;
+  background: #f7f9ff;
+  box-shadow: 0 24px 70px rgb(12 26 76 / 34%);
+  pointer-events: auto;
+  animation: tll-price-drawer-in 180ms ease-out;
+}
+
+@keyframes tll-price-drawer-in {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+#tll-root .tll-price-dialog-header {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: linear-gradient(135deg, #6387ef, #3f63ce);
+  padding: 9px 12px 9px 16px;
+  color: #fff;
+}
+
+#tll-root .tll-price-dialog-header strong,
+#tll-root .tll-price-dialog-header span { display: block; }
+#tll-root .tll-price-dialog-header strong { font-size: 15px; }
+#tll-root .tll-price-dialog-header span { margin-top: 2px; color: rgb(255 255 255 / 75%); font-size: 10px; }
+#tll-root .tll-price-dialog-header .tll-icon-button { flex: 0 0 32px; }
+
+#tll-root .tll-price-dialog-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+}
+
+#tll-root .tll-price-refresh {
+  min-height: 32px;
+  border: 1px solid rgb(255 255 255 / 32%);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 14%);
+  padding: 6px 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+#tll-root .tll-price-refresh:hover { background: rgb(255 255 255 / 24%); }
+#tll-root .tll-price-refresh:disabled { cursor: wait; opacity: .65; }
+
+#tll-root .tll-price-dialog-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+  padding: 14px 16px 16px;
+}
+
+#tll-root .tll-price-columns,
+#tll-root .tll-price-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(88px, .9fr) minmax(78px, .8fr);
+  align-items: center;
+  gap: 7px;
+}
+
+#tll-root .tll-price-columns {
+  grid-template-columns: minmax(0, 1.4fr) minmax(150px, 1fr) minmax(120px, .8fr);
+  padding: 2px 10px 7px;
+  color: #818ba4;
+  font-size: 9px;
+}
+
+#tll-root .tll-price-columns span:nth-child(n + 2) { text-align: right; }
+
+#tll-root .tll-price-list {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #dce2f1;
+  border-radius: 8px;
+  scrollbar-width: thin;
+}
+
+#tll-root .tll-price-row {
+  grid-template-columns: minmax(0, 1.4fr) minmax(150px, 1fr) minmax(120px, .8fr);
+  min-height: 44px;
+  width: 100%;
+  min-height: 38px;
+  border: 0;
+  border-bottom: 1px solid #e8ebf4;
+  background: #fff;
+  padding: 7px 8px;
+  color: #2e3955;
+  cursor: pointer;
+  text-align: left;
+}
+
+#tll-root .tll-price-row:last-child { border-bottom: 0; }
+#tll-root .tll-price-row:hover { background: #f4f6ff; }
+#tll-root .tll-price-row.tll-selected { background: #e9efff; color: #3157c3; }
+#tll-root .tll-price-row:disabled { cursor: default; opacity: .72; }
+#tll-root .tll-price-row strong { overflow: hidden; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+#tll-root .tll-price-row span,
+#tll-root .tll-price-row small { font-size: 10px; font-weight: 700; text-align: right; white-space: nowrap; }
+#tll-root .tll-price-row small { color: #6f7992; }
+
+#tll-root .tll-price-state { margin: 0; padding: 18px 10px; color: #6f7992; font-size: 11px; text-align: center; }
+
+#tll-root .tll-price-dialog-body > p {
+  margin: 8px 3px 0;
+  color: #7c859d;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  #tll-root .tll-price-modal {
+    position: fixed;
+    inset: 8px;
+    width: auto;
+    height: auto;
+  }
+}
+
+#tll-root .tll-status {
+  min-height: 18px;
+  margin: 0;
+  padding: 0 15px 12px;
+  color: #5f6983;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+#tll-root .tll-status.tll-success { color: #3567d5; }
+#tll-root .tll-status.tll-error { color: #b42318; }
+
+#tll-root .tll-result {
+  border-top: 1px solid #dde2f0;
+  background: #fff;
+  padding: 13px 15px 15px;
+}
+
+#tll-root .tll-result textarea { min-height: 72px; resize: vertical; word-break: break-all; }
+#tll-root .tll-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+
+#tll-root .tll-privacy {
+  margin: 0;
+  border-top: 1px solid #dde2f0;
+  padding: 10px 15px 12px;
+  color: #7c859d;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+@media (max-width: 520px) {
+  #tll-root { top: 66px; right: 8px; width: calc(100vw - 16px); max-width: none; }
+  #tll-root.tll-collapsed { width: 250px; }
+  #tll-root .tll-body { max-height: calc(100dvh - 82px); }
+  #tll-root .tll-price-dialog-body { padding: 12px 10px 13px; }
+  #tll-root .tll-price-columns,
+  #tll-root .tll-price-row {
+    grid-template-columns: minmax(0, 1.15fr) minmax(94px, .95fr) minmax(84px, .8fr);
+    gap: 5px;
+  }
+}
