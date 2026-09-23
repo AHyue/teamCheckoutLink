@@ -14,7 +14,7 @@ teamCheckoutLink 是开源浏览器扩展。本政策说明扩展在用户主动
 - 生成请求会把认证令牌及用户填写的工作区名称、席位数、付款周期、国家/地区和优惠码发送到目标网站的官方结账接口，以返回托管结账链接。扩展开发者不接收这些内容。
 - 用户点击“粘贴”时，扩展读取剪贴板文本并填入对应字段；扩展不会在后台读取剪贴板。
 - 扩展在浏览器本地保存工作区、席位数、付款周期、国家/地区、优惠码及面板位置、展开状态等偏好。用户可使用清空控件移除优惠码或 Session；Session 本身不保存。
-- 价格参考会请求目标网站同源的地区价格配置，并向 `open.er-api.com` 请求公开汇率。汇率请求不包含用户填写的 Session、令牌、优惠码或工作区名称。价格响应仅缓存在当前页面内存中。
+- 价格参考会请求目标网站同源的地区价格配置，并向 `open.er-api.com` 请求公开汇率。汇率请求不包含用户填写的 Session、令牌、优惠码或工作区名称。地区价格配置仅缓存在当前页面内存中；汇率数据缓存在扩展本地存储中 24 小时，到期后在用户下次打开参考表时自动更新。用户可手动刷新汇率，每滚动 1 小时最多 3 次；请求失败后至少间隔 1 小时才重试。参考表提供 ExchangeRate-API 署名链接。
 
 ### 信息使用与共享
 
@@ -22,7 +22,7 @@ teamCheckoutLink 是开源浏览器扩展。本政策说明扩展在用户主动
 
 ### 保存与安全
 
-Session / `accessToken` 只在页面内存中使用。普通表单偏好保存在浏览器扩展本地存储中，直到用户清除、覆盖或卸载扩展。汇率和价格缓存随页面关闭而清除。
+Session / `accessToken` 只在页面内存中使用。普通表单偏好保存在浏览器扩展本地存储中，直到用户清除、覆盖或卸载扩展。地区价格配置缓存随页面关闭而清除；汇率数据缓存在扩展本地存储中，供 24 小时内复用，到期后在用户下次打开参考表时自动更新。
 
 ### 联系方式
 
@@ -38,7 +38,7 @@ teamCheckoutLink is an open-source browser extension. This policy explains how t
 - A generation request sends the authentication token and the workspace name, seat count, billing interval, country/region, and promo code you entered to the target website's official checkout endpoint so it can return a hosted checkout link. The extension developer does not receive this information.
 - When you select **Paste**, the extension reads clipboard text and puts it in the corresponding field. It does not read the clipboard in the background.
 - The extension stores workspace, seat count, billing interval, country/region, promo code, panel position, and panel display preferences locally in the browser. You can clear the promo code or Session using the clear controls. Session values are not stored.
-- The price reference requests regional pricing configuration from the target website's same-origin endpoint and public exchange rates from `open.er-api.com`. The exchange-rate request does not include your Session, token, promo code, or workspace name. Price responses are cached only in the current page's memory.
+- The price reference requests regional pricing configuration from the target website's same-origin endpoint and public exchange rates from `open.er-api.com`. The exchange-rate request does not include your Session, token, promo code, or workspace name. Regional pricing configuration is cached only in the current page; exchange-rate data is cached in local extension storage for 24 hours and automatically refreshed the next time the reference table is opened after expiry. Users may manually refresh rates up to three times per rolling hour; failed requests wait at least one hour before retrying. The reference table includes an ExchangeRate-API attribution link.
 
 ### Use and sharing
 
@@ -46,7 +46,7 @@ Information is used only for link generation initiated by you, regional price re
 
 ### Retention and security
 
-Session / `accessToken` values are used only in page memory. Form preferences are stored in the browser's local extension storage until cleared, replaced, or the extension is uninstalled. Price and exchange-rate caches are cleared when the page closes.
+Session / `accessToken` values are used only in page memory. Form preferences are stored in the browser's local extension storage until cleared, replaced, or the extension is uninstalled. Regional pricing configuration is cached only in the current page. Exchange-rate data is cached in local extension storage for 24 hours and automatically refreshed the next time the reference table is opened after expiry.
 
 ### Contact
 
