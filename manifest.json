@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Team Long Link",
+  "name": "teamCheckoutLink",
   "version": "1.0.0",
-  "description": "使用当前 ChatGPT 登录会话或手动 Session 生成团队结账链接。",
+  "description": "使用当前登录会话或手动 Session 生成 Team 结账链接。",
   "action": {
-    "default_title": "Team Long Link",
+    "default_title": "teamCheckoutLink",
     "default_popup": "popup.html"
   },
   "background": {

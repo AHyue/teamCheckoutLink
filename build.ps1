@@ -31,8 +31,8 @@ foreach ($file in $sharedFiles) {
   Copy-Item -LiteralPath (Join-Path $projectRoot $file) -Destination (Join-Path $firefoxRoot $file)
 }
 
-Compress-Archive -Path (Join-Path $chromiumRoot '*') -DestinationPath (Join-Path $distRoot 'team-long-link-chromium.zip')
-Compress-Archive -Path (Join-Path $edgeRoot '*') -DestinationPath (Join-Path $distRoot 'team-long-link-edge.zip')
-Compress-Archive -Path (Join-Path $firefoxRoot '*') -DestinationPath (Join-Path $distRoot 'team-long-link-firefox.zip')
+Compress-Archive -Path (Join-Path $chromiumRoot '*') -DestinationPath (Join-Path $distRoot 'teamCheckoutLink-chromium.zip')
+Compress-Archive -Path (Join-Path $edgeRoot '*') -DestinationPath (Join-Path $distRoot 'teamCheckoutLink-edge.zip')
+Compress-Archive -Path (Join-Path $firefoxRoot '*') -DestinationPath (Join-Path $distRoot 'teamCheckoutLink-firefox.zip')
 
 Write-Host "Build complete: $distRoot"

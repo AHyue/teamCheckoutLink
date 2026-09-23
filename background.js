@@ -30,7 +30,7 @@ async function loadPriceReference() {
 }
 
 api.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-  if (message?.type !== 'team-long-link:load-price-reference') return undefined;
+  if (message?.type !== 'teamCheckoutLink:load-price-reference') return undefined;
   loadPriceReference()
     .then(data => sendResponse({ ok: true, ...data }))
     .catch(error => sendResponse({ ok: false, error: error?.message || String(error) }));

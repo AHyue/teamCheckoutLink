@@ -67,7 +67,7 @@
         if (!sessionResponse.ok) throw new Error(`读取登录会话失败（HTTP ${sessionResponse.status}）`);
         const session = await sessionResponse.json();
         accessToken = String(session?.accessToken || '').trim();
-        if (!accessToken) throw new Error('当前页面没有可用登录会话；请登录 ChatGPT，或开启手动 Session 模式。');
+        if (!accessToken) throw new Error('当前页面没有可用登录会话；请登录账号，或开启手动 Session 模式。');
       }
 
       const response = await fetch('/backend-api/payments/checkout', {

@@ -1,8 +1,8 @@
 (() => {
   'use strict';
 
-  if (globalThis.__teamLongLinkContentLoaded) return;
-  globalThis.__teamLongLinkContentLoaded = true;
+  if (globalThis.__teamCheckoutLinkContentLoaded) return;
+  globalThis.__teamCheckoutLinkContentLoaded = true;
 
   const api = globalThis.browser || globalThis.chrome;
   const SESSION_URL = 'https://chatgpt.com/api/auth/session';
@@ -42,7 +42,7 @@
     ['NZ', '新西兰', 'New Zealand', 'NZD']
   ];
 
-  const bridgeChannel = `team-long-link:${crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`}`;
+  const bridgeChannel = `teamCheckoutLink:${crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`}`;
   const pendingRequests = new Map();
   let bridgeReady = null;
   let panelRoot = null;
@@ -57,7 +57,7 @@
     let url;
     try { url = new URL(candidate); } catch { throw new Error('优惠链接格式无效。'); }
     if (!['chatgpt.com', 'www.chatgpt.com'].includes(url.hostname.toLowerCase())) {
-      throw new Error('优惠链接必须使用 chatgpt.com 官方域名。');
+      throw new Error('优惠链接必须使用官方域名。');
     }
     const queryCode = [...url.searchParams.entries()]
       .find(([key]) => key.toLowerCase() === 'promocode')?.[1];
@@ -85,7 +85,7 @@
       script.src = `${api.runtime.getURL('page-bridge.js')}?channel=${encodeURIComponent(bridgeChannel)}`;
       script.async = false;
       script.onload = () => resolve();
-      script.onerror = () => reject(new Error('无法连接 ChatGPT 页面环境，请刷新页面后重试。'));
+      script.onerror = () => reject(new Error('无法连接页面环境，请刷新后重试。'));
       (document.head || document.documentElement).appendChild(script);
     });
     return bridgeReady;
@@ -222,7 +222,7 @@
       <section class="tll-panel" aria-label="TEAM 结账链接生成器">
         <header class="tll-header" title="按住拖动">
           <span class="tll-logo">TL</span>
-          <div class="tll-heading"><strong>TEAM 结账链接</strong><span>拖动顶部可移动 · 仅限 ChatGPT 官网</span></div>
+          <div class="tll-heading"><strong>teamCheckoutLink</strong><span>拖动顶部可移动 · 仅限官网页面</span></div>
           <div class="tll-header-actions">
             <button class="tll-icon-button" id="tll-collapse" type="button" title="收起" aria-label="收起面板">−</button>
             <button class="tll-icon-button" id="tll-close" type="button" title="关闭" aria-label="关闭面板">×</button>
@@ -263,7 +263,7 @@
             <div class="tll-field">
               <label for="tll-promo">优惠码或官方优惠链接 <span>可选</span></label>
               <div class="tll-clearable-input">
-                <input id="tll-promo" maxlength="512" autocomplete="off" placeholder="PROMO2026 或 chatgpt.com/p/…">
+              <input id="tll-promo" maxlength="512" autocomplete="off" placeholder="PROMO2026 或粘贴优惠链接">
                 <button class="tll-promo-paste" id="tll-promo-paste" type="button" title="从剪贴板粘贴优惠码" aria-label="粘贴优惠码">粘贴</button>
                 <button class="tll-clear-button" id="tll-promo-clear" type="button" title="清空优惠码" aria-label="清空优惠码">清空</button>
               </div>
@@ -274,9 +274,9 @@
                 <input id="tll-manual-session" type="checkbox" role="switch" aria-controls="tll-session-content" aria-expanded="false">
               </label>
               <div class="tll-session-content" id="tll-session-content" hidden>
-                <p class="tll-session-guide">先在已登录 ChatGPT 账号的浏览器中打开下方地址，然后复制页面显示的完整 JSON。</p>
+                <p class="tll-session-guide">先在已登录账号的浏览器中打开下方地址，然后复制页面显示的完整 JSON。</p>
                 <div class="tll-session-source">
-                  <code title="https://chatgpt.com/api/auth/session">https://chatgpt.com/api/auth/session</code>
+                  <code title="Session 获取地址">官方 Session 获取地址</code>
                   <div class="tll-session-source-actions">
                     <button id="tll-session-open" type="button">打开获取页</button>
                     <button id="tll-session-copy-url" type="button">复制地址</button>
@@ -324,7 +324,7 @@
           <div class="tll-price-dialog-body">
             <div class="tll-price-columns" aria-hidden="true"><span>国家 / 地区</span><span>当地货币优惠参考</span><span>约人民币 ↑</span></div>
             <div class="tll-price-list" id="tll-price-list"></div>
-            <p id="tll-price-hint">首次打开时读取 ChatGPT 官方价格配置；之后使用当前页面缓存，可点击“刷新价格”手动更新。</p>
+            <p id="tll-price-hint">首次打开时读取官方地区价格配置；之后使用当前页面缓存，可点击“刷新价格”手动更新。</p>
           </div>
         </section>
       </div>`;
@@ -613,12 +613,12 @@
       priceLoading = true;
       $('#tll-price-refresh').disabled = true;
       $('#tll-price-refresh').textContent = '刷新中…';
-      $('#tll-price-hint').textContent = '正在读取 ChatGPT 官方地区价格配置和最新汇率…';
+      $('#tll-price-hint').textContent = '正在读取官方地区价格配置和最新汇率…';
       renderPriceRows();
       try {
         const [configResponse, rateResponse] = await Promise.all([
           getCountryPriceConfigs(COUNTRIES.map(([code]) => code), force),
-          api.runtime.sendMessage({ type: 'team-long-link:load-price-reference' })
+          api.runtime.sendMessage({ type: 'teamCheckoutLink:load-price-reference' })
         ]);
         if (!rateResponse?.ok) throw new Error(rateResponse?.error || '汇率服务没有返回有效结果。');
         const rate = Number(rateResponse.cnyRate);
@@ -635,7 +635,7 @@
         const cached = formatRateDate(priceCachedAt);
         const rateUpdated = formatRateDate(rateResponse.rateDate);
         const failedCount = Array.isArray(configResponse.failed) ? configResponse.failed.length : 0;
-        $('#tll-price-hint').textContent = `价格来源：ChatGPT 官方配置；缓存于 ${cached}${rateUpdated ? ` · 汇率更新 ${rateUpdated}` : ''}${failedCount ? ` · ${failedCount} 个地区暂未返回` : ''}。固定按月付、2 席、5 折参考；点击“刷新价格”可手动更新，最终金额和税费以官方结账页为准。`;
+        $('#tll-price-hint').textContent = `价格来源：官方配置；缓存于 ${cached}${rateUpdated ? ` · 汇率更新 ${rateUpdated}` : ''}${failedCount ? ` · ${failedCount} 个地区暂未返回` : ''}。固定按月付、2 席、5 折参考；点击“刷新价格”可手动更新，最终金额和税费以官方结账页为准。`;
         refreshCurrentCountryPrice();
       } catch (error) {
         if (!hadCache) {
@@ -825,7 +825,7 @@
         document.execCommand('copy');
         input.remove();
       }
-      setStatus(root, 'Session 获取地址已复制，请在已登录 ChatGPT 的浏览器中打开。', 'success');
+      setStatus(root, 'Session 获取地址已复制，请在已登录账号的浏览器中打开。', 'success');
     });
 
     $('#tll-collapse').addEventListener('click', async () => {
@@ -852,7 +852,7 @@
       const useManualSession = $('#tll-manual-session').checked;
       setStatus(root, useManualSession
         ? '正在使用手动 Session 创建结账链接…'
-        : '正在读取当前 ChatGPT 登录会话并创建结账链接…');
+        : '正在读取当前登录会话并创建结账链接…');
       try {
         const workspace = $('#tll-workspace').value.trim();
         const seats = Number($('#tll-seats').value);
@@ -958,7 +958,7 @@
   }
 
   api.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-    if (message?.type !== 'team-long-link:show') return undefined;
+    if (message?.type !== 'teamCheckoutLink:show') return undefined;
     api.storage.local.set({ panelHidden: false });
     mountPanel();
     sendResponse({ ok: true });
