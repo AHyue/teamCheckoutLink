@@ -151,6 +151,7 @@
   }
 
   const COUNTRY_PRICE_CACHE_TTL = 30 * 60 * 1000;
+  const EXCHANGE_RATE_CACHE_TTL = 24 * 60 * 60 * 1000;
   const countryPriceCache = new Map();
   const countryPriceRequests = new Map();
 
@@ -160,7 +161,7 @@
     countryPriceCache.set(code, { data: item.data, cachedAt: Date.now() });
   }
 
-  async function getCountryPriceConfigs(countryCodes, force = false) {
+  async function getCountryPriceConfigs(countryCodes) {
     const codes = [...new Set(countryCodes.map(value => String(value || '').toUpperCase()))]
       .filter(code => /^[A-Z]{2}$/.test(code));
     const configs = new Map();
@@ -170,7 +171,7 @@
 
     codes.forEach(code => {
       const cached = countryPriceCache.get(code);
-      if (!force && cached && Date.now() - cached.cachedAt < COUNTRY_PRICE_CACHE_TTL) {
+      if (cached && Date.now() - cached.cachedAt < COUNTRY_PRICE_CACHE_TTL) {
         configs.set(code, cached.data);
       } else if (countryPriceRequests.has(code)) {
         waiters.push({ code, promise: countryPriceRequests.get(code) });
@@ -320,14 +321,15 @@
           <header class="tll-price-dialog-header">
             <div><strong id="tll-price-modal-title">各地区 2 席优惠参考</strong><span>月付 · 5 折估算 · 按人民币由低到高</span></div>
             <div class="tll-price-dialog-actions">
-              <button class="tll-price-refresh" id="tll-price-refresh" type="button" title="重新请求官方配置和汇率">刷新价格</button>
+              <button class="tll-price-refresh" id="tll-price-refresh" type="button" title="每小时最多刷新 3 次；请求失败后 1 小时内不会重试">刷新汇率</button>
               <button class="tll-icon-button tll-price-close" id="tll-price-close" type="button" title="关闭" aria-label="关闭参考表">×</button>
             </div>
           </header>
           <div class="tll-price-dialog-body">
             <div class="tll-price-columns" aria-hidden="true"><span>国家 / 地区</span><span>当地货币优惠参考</span><span>约人民币 ↑</span></div>
             <div class="tll-price-list" id="tll-price-list"></div>
-            <p id="tll-price-hint">首次打开时读取官方地区价格配置；之后使用当前页面缓存，可点击“刷新价格”手动更新。</p>
+            <p id="tll-price-hint">汇率默认缓存 24 小时并自动更新；手动刷新每小时最多 3 次，请求失败后至少间隔 1 小时重试。</p>
+            <p class="tll-price-attribution">汇率数据来源：<a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">Rates By Exchange Rate API</a></p>
           </div>
         </section>
       </div>`;
@@ -606,9 +608,11 @@
       }).filter(Boolean).sort((a, b) => a.unitUsd - b.unitUsd || a.country.localeCompare(b.country));
     }
 
-    async function loadPriceReferences(force = false) {
+    async function loadPriceReferences(forceRate = false) {
       if (priceLoading) return;
-      if (!force && priceRows.length && priceRate) {
+      const cachedAtMs = Date.parse(priceCachedAt || '');
+      if (!forceRate && priceRows.length && priceRate && Number.isFinite(cachedAtMs)
+        && Date.now() - cachedAtMs >= 0 && Date.now() - cachedAtMs < EXCHANGE_RATE_CACHE_TTL) {
         renderPriceRows();
         return;
       }
@@ -616,12 +620,12 @@
       priceLoading = true;
       $('#tll-price-refresh').disabled = true;
       $('#tll-price-refresh').textContent = '刷新中…';
-      $('#tll-price-hint').textContent = '正在读取官方地区价格配置和最新汇率…';
+      $('#tll-price-hint').textContent = '正在读取官方地区价格配置和汇率…';
       renderPriceRows();
       try {
         const [configResponse, rateResponse] = await Promise.all([
-          getCountryPriceConfigs(COUNTRIES.map(([code]) => code), force),
-          api.runtime.sendMessage({ type: 'teamCheckoutLink:load-price-reference' })
+          getCountryPriceConfigs(COUNTRIES.map(([code]) => code)),
+          api.runtime.sendMessage({ type: 'teamCheckoutLink:load-price-reference', force: forceRate })
         ]);
         if (!rateResponse?.ok) throw new Error(rateResponse?.error || '汇率服务没有返回有效结果。');
         const rate = Number(rateResponse.cnyRate);
@@ -634,11 +638,16 @@
         if (!rows.length) throw new Error('官方价格配置中没有可用的 Business 月付价格。');
         priceRows = rows;
         priceRate = rate;
-        priceCachedAt = new Date().toISOString();
+        priceCachedAt = new Date(Number(rateResponse.cachedAt) || Date.now()).toISOString();
         const cached = formatRateDate(priceCachedAt);
         const rateUpdated = formatRateDate(rateResponse.rateDate);
         const failedCount = Array.isArray(configResponse.failed) ? configResponse.failed.length : 0;
-        $('#tll-price-hint').textContent = `价格来源：官方配置；缓存于 ${cached}${rateUpdated ? ` · 汇率更新 ${rateUpdated}` : ''}${failedCount ? ` · ${failedCount} 个地区暂未返回` : ''}。固定按月付、2 席、5 折参考；点击“刷新价格”可手动更新，最终金额和税费以官方结账页为准。`;
+        const cacheStatus = rateResponse.stale
+          ? ` · 暂用本地汇率缓存（${cached}）${rateResponse.retryBlocked ? '；失败后 1 小时内不会重试' : ''}${rateResponse.refreshError ? `：${rateResponse.refreshError}` : ''}`
+          : forceRate
+            ? ' · 汇率已手动更新'
+          : ` · 汇率缓存于 ${cached}，24 小时内自动复用`;
+        $('#tll-price-hint').textContent = `价格来源：官方配置${rateUpdated ? ` · 汇率数据更新于 ${rateUpdated}` : ''}${cacheStatus}${failedCount ? ` · ${failedCount} 个地区暂未返回` : ''}。固定按月付、2 席、5 折参考；最终金额和税费以官方结账页为准。`;
         refreshCurrentCountryPrice();
       } catch (error) {
         if (!hadCache) {
@@ -646,11 +655,11 @@
           priceRate = null;
           priceCachedAt = null;
         }
-        $('#tll-price-hint').textContent = `${force ? '刷新' : '获取'}失败：${error?.message || String(error)}。${hadCache ? '继续显示当前页面缓存。' : '请点击“刷新价格”重试。'}`;
+        $('#tll-price-hint').textContent = `${forceRate ? '手动刷新失败' : '获取失败'}：${error?.message || String(error)}。${hadCache ? '继续显示当前页面已有缓存。' : '稍后重新打开参考表会自动重试。'}`;
       } finally {
         priceLoading = false;
         $('#tll-price-refresh').disabled = false;
-        $('#tll-price-refresh').textContent = '刷新价格';
+        $('#tll-price-refresh').textContent = '刷新汇率';
         renderPriceRows();
       }
     }

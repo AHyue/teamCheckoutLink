@@ -552,6 +552,8 @@
   line-height: 1.45;
 }
 
+#tll-root .tll-price-attribution a { color: #3157c3; }
+
 @media (max-width: 900px) {
   #tll-root .tll-price-modal {
     position: fixed;
