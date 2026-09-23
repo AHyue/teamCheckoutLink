@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "teamCheckoutLink",
+  "name": "Team Checkout Link",
   "version": "1.0.0",
   "description": "使用当前登录会话或手动 Session 生成 Team 结账链接。",
   "icons": {
@@ -9,7 +9,7 @@
     "128": "assets/icons/icon128.png"
   },
   "action": {
-    "default_title": "teamCheckoutLink",
+    "default_title": "Team Checkout Link",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "assets/icons/icon16.png",

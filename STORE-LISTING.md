@@ -4,7 +4,7 @@ This is a draft for marketplace submissions. Update any marked contact or public
 
 ## Product
 
-- **Name:** teamCheckoutLink
+- **Name:** Team Checkout Link
 - **Suggested category:** Productivity / Utilities (choose the closest available category in each store)
 - **Primary listing language:** Chinese (Simplified)
 - **Interface language:** Chinese (English README is provided; the extension UI is currently Chinese)
@@ -19,7 +19,7 @@ English: `Create hosted Team checkout links and view official regional price ref
 
 ## Detailed description — Chinese
 
-teamCheckoutLink 是一个开源浏览器扩展，可在支持的官网页面填写 Team 工作区信息并生成托管结账链接。扩展提供国家和货币选择、优惠码输入、官方地区价格参考及汇率换算。用户可使用当前网页登录会话，也可主动开启手动 Session 模式。
+Team Checkout Link 是一个开源浏览器扩展，可在支持的官网页面填写 Team 工作区信息并生成托管结账链接。扩展提供国家和货币选择、优惠码输入、官方地区价格参考及汇率换算。用户可使用当前网页登录会话，也可主动开启手动 Session 模式。
 
 Session 仅在当前页面内存中处理，不保存到扩展存储。扩展会将用户主动提交的结账参数发送到目标网站的官方结账接口，不会代替用户付款。
 
@@ -27,7 +27,7 @@ Session 仅在当前页面内存中处理，不保存到扩展存储。扩展会
 
 ## Detailed description — English
 
-teamCheckoutLink is an open-source browser extension for entering Team workspace details on supported website pages and generating a hosted checkout link. It includes country and currency selection, promo-code input, official regional price references, and exchange-rate conversion. Users can use the current website session or explicitly enable Manual Session mode.
+Team Checkout Link is an open-source browser extension for entering Team workspace details on supported website pages and generating a hosted checkout link. It includes country and currency selection, promo-code input, official regional price references, and exchange-rate conversion. Users can use the current website session or explicitly enable Manual Session mode.
 
 Session values are processed only in the current page's memory and are not saved in extension storage. Checkout parameters are sent to the target website's official checkout endpoint. The extension does not submit payment on the user's behalf.
 

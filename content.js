@@ -222,7 +222,7 @@
       <section class="tll-panel" aria-label="TEAM 结账链接生成器">
         <header class="tll-header" title="按住拖动">
           <span class="tll-logo">TL</span>
-          <div class="tll-heading"><strong>teamCheckoutLink</strong><span>拖动顶部可移动 · 仅限官网页面</span></div>
+          <div class="tll-heading"><strong>Team Checkout Link</strong><span>拖动顶部可移动 · 仅限官网页面</span></div>
           <div class="tll-header-actions">
             <a class="tll-icon-button tll-github-link" href="https://github.com/AHyue/teamCheckoutLink" target="_blank" rel="noopener noreferrer" title="GitHub 项目" aria-label="打开 GitHub 项目">
               <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v6a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/></svg>

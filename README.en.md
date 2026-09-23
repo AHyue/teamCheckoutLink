@@ -1,8 +1,8 @@
-# teamCheckoutLink
+# Team Checkout Link
 
 [简体中文](README.md) | [English](README.en.md)
 
-![teamCheckoutLink interface screenshot](assets/teamCheckoutLink-current.png)
+![Team Checkout Link interface screenshot](assets/teamCheckoutLink-current.png)
 
 A browser extension that adds a movable floating panel to supported website pages. It uses the current signed-in session or a manually provided session access token to submit Team checkout parameters and display the hosted checkout link.
 
@@ -53,7 +53,7 @@ Temporary Firefox add-ons are removed when the browser restarts. Long-term distr
 
 ## Disclaimer
 
-teamCheckoutLink is an open-source project for learning and discussion and for lawful personal use. Users must follow the target website's terms and applicable laws. Do not use this project for fraud, bypassing service restrictions or risk controls, unauthorized access, or any other unlawful activity. This is not an official product of, and is not affiliated with or endorsed by, the target website or payment providers. Users are responsible for confirming eligibility, prices, and checkout terms, and for their own use of the project.
+Team Checkout Link is an open-source project for learning and discussion and for lawful personal use. Users must follow the target website's terms and applicable laws. Do not use this project for fraud, bypassing service restrictions or risk controls, unauthorized access, or any other unlawful activity. This is not an official product of, and is not affiliated with or endorsed by, the target website or payment providers. Users are responsible for confirming eligibility, prices, and checkout terms, and for their own use of the project.
 
 ## Privacy and limitations
 
