@@ -78,8 +78,6 @@ teamCheckoutLink/
 ├─ LICENSE
 ├─ README.md
 ├─ README.en.md
-├─ PRIVACY.md
-├─ STORE-LISTING.md
 ├─ manifest.json
 ├─ manifest.firefox.json
 ├─ popup.html
@@ -91,15 +89,10 @@ teamCheckoutLink/
 ├─ background.js
 ├─ build.ps1
 ├─ assets/
-│  ├─ teamCheckoutLink.png
-│  ├─ teamCheckoutLink-current.png
 │  └─ icons/
 │     ├─ teamCheckoutLink.svg
 │     ├─ icon16.png
 │     ├─ icon48.png
 │     └─ icon128.png
-└─ store-assets/
-   ├─ edge-logo-300x300.png
-   ├─ chrome-small-promo-440x280.png
-   └─ store-screenshot-1280x800.png
+└─ .gitignore
 ```
