@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | [English](README.en.md)
 
-![teamCheckoutLink interface screenshot](assets/teamCheckoutLink.png)
+![teamCheckoutLink interface screenshot](assets/teamCheckoutLink-current.png)
 
 A browser extension that adds a movable floating panel to supported website pages. It uses the current signed-in session or a manually provided session access token to submit Team checkout parameters and display the hosted checkout link.
 
@@ -43,13 +43,17 @@ Temporary Firefox add-ons are removed when the browser restarts. Long-term distr
 ## Use
 
 1. Open `https://chatgpt.com/`. Use the existing signed-in session, or enable **Manual Session** to use a manually provided token.
-2. The floating panel appears on the right. Drag its header to move it, use `−` to collapse it, and use `×` to close it. Its position and collapsed/hidden states are saved.
+2. The floating panel appears on the right. Drag its header to move it, use `−` to collapse it, and use `×` to close it. Select the GitHub icon in the header to open the project repository. Its position and collapsed/hidden states are saved.
 3. If you close the panel, use the extension button and select **Show floating tool** to bring it back.
 4. Enter a workspace name, seat count, billing interval, country, and optional promo code. Search countries by Chinese name, English name, or country code. Currency is selected automatically. The official pre-discount Business price below the country selector updates with the selected country, seats, and billing interval.
 5. Select **Regional 2-seat price reference** to open the side panel. Prices are sorted from lowest to highest by the approximate CNY amount. The first open fetches official regional pricing and the current exchange rate; results are cached in page memory. Select **Refresh prices** to update them manually. Selecting a country in the reference list also updates the form.
 6. The promo code and manual Session fields both have a **Paste** button. You can also paste with the keyboard.
 7. For manual Session mode, enable the switch, open or copy the session endpoint `https://chatgpt.com/api/auth/session` in a browser signed into the account, then paste the full JSON response or its `accessToken`. A Session Cookie cannot replace a Bearer access token. Do not share your Session.
 8. Select **Generate link**, then copy or open the returned checkout page.
+
+## Disclaimer
+
+teamCheckoutLink is an open-source project for learning and discussion and for lawful personal use. Users must follow the target website's terms and applicable laws. Do not use this project for fraud, bypassing service restrictions or risk controls, unauthorized access, or any other unlawful activity. This is not an official product of, and is not affiliated with or endorsed by, the target website or payment providers. Users are responsible for confirming eligibility, prices, and checkout terms, and for their own use of the project.
 
 ## Privacy and limitations
 
