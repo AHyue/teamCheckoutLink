@@ -18,6 +18,11 @@ Run `build.ps1` to create the unpacked builds under `dist\chromium`, `dist\edge`
 
 Safari is not currently packaged. Its WebExtension requires conversion, signing, and installation through Xcode.
 
+## Store availability
+
+- **Google Chrome**: Version 1.0.0 is publicly available in the [Chrome Web Store](https://chrome.google.com/webstore/detail/egjbpdjjmmmbnccbhhknnnimpbjhmdie).
+- Other browser-store availability will be listed here once each publication is confirmed.
+
 ## Install
 
 ### Chrome, Edge, Brave, and Opera
