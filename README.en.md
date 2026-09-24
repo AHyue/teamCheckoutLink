@@ -20,7 +20,7 @@ Safari is not currently packaged. Its WebExtension requires conversion, signing,
 
 ## Store availability
 
-- **Google Chrome**: Version 1.0.0 is publicly available in the <a href="https://chrome.google.com/webstore/detail/egjbpdjjmmmbnccbhhknnnimpbjhmdie" target="_blank" rel="noopener noreferrer">Chrome Web Store</a>.
+- **Google Chrome**: Version 1.0.0 is publicly available in the [Chrome Web Store](https://chrome.google.com/webstore/detail/egjbpdjjmmmbnccbhhknnnimpbjhmdie).
 - Other browser-store availability will be listed here once each publication is confirmed.
 
 ## Install
