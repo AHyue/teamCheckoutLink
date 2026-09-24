@@ -56,6 +56,12 @@ Temporary Firefox add-ons are removed when the browser restarts. Long-term distr
 7. For manual Session mode, enable the switch, open or copy the session endpoint `https://chatgpt.com/api/auth/session` in a browser signed into the account, then paste the full JSON response or its `accessToken`. A Session Cookie cannot replace a Bearer access token. Do not share your Session.
 8. Select **Generate link**, then copy or open the returned checkout page.
 
+## Screenshots
+
+![Team Checkout Link floating panel in a browser page](docs/images/team-checkout-in-page.png)
+
+![Close-up of the Team Checkout Link panel](docs/images/team-checkout-panel.png)
+
 ## Disclaimer
 
 Team Checkout Link is an open-source project for learning and discussion and for lawful personal use. Users must follow the target website's terms and applicable laws. Do not use this project for fraud, bypassing service restrictions or risk controls, unauthorized access, or any other unlawful activity. This is not an official product of, and is not affiliated with or endorsed by, the target website or payment providers. Users are responsible for confirming eligibility, prices, and checkout terms, and for their own use of the project.

@@ -58,6 +58,12 @@ Firefox 的临时扩展在浏览器重启后会被移除。长期安装需要签
 7. 如需手动 Session，开启对应开关。点击“打开获取页”，或复制 `https://chatgpt.com/api/auth/session` 后在已登录目标账号的浏览器中打开，再粘贴页面返回的完整 JSON 或其中的 `accessToken`。普通 Session Cookie 不能替代 Bearer access token，请勿把 Session 发送给他人。
 8. 点击“生成链接”，成功后复制或打开结账页。
 
+## 界面截图
+
+![浏览器页面中的 Team Checkout Link 悬浮面板](docs/images/team-checkout-in-page.png)
+
+![Team Checkout Link 面板近景](docs/images/team-checkout-panel.png)
+
 ## 免责声明
 
 Team Checkout Link 是开源交流学习项目，供合法学习和个人使用。使用者须遵守目标网站的服务条款及适用法律；不得将本项目用于欺诈、规避服务限制或风控、未经授权访问，或其他违法用途。本项目不是目标网站或支付服务提供方的官方产品，与其无隶属或背书关系。使用者应自行确认资格、价格和结账条款，并对自己的使用行为负责。
