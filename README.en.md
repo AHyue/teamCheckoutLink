@@ -2,6 +2,8 @@
 
 [简体中文](README.md) | [English](README.en.md)
 
+[Project page (in-page language switch)](https://ahyue.github.io/teamCheckoutLink/)
+
 A browser extension that adds a movable floating panel to supported website pages. It uses the current signed-in session or a manually provided session access token to submit Team checkout parameters and display the hosted checkout link.
 
 ## Supported browsers

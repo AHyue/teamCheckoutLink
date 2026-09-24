@@ -2,6 +2,8 @@
 
 [简体中文](README.md) | [English](README.en.md)
 
+[项目主页（页面内中英切换）](https://ahyue.github.io/teamCheckoutLink/)
+
 一个无需服务器的浏览器扩展。访问支持的官网页面时，它会显示可拖动的悬浮面板，使用当前登录会话或用户手动提供的 Session access token 提交团队结账参数，并显示官方托管结账链接。
 
 ## 支持的浏览器
