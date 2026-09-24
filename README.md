@@ -18,6 +18,11 @@ Chrome、Edge、Brave 和 Opera 使用 `manifest.json`。Firefox 打包时使用
 
 Safari 的 WebExtension 需要使用 Xcode 转换、签名和安装，本项目当前不提供 Safari 安装包。
 
+## 商店上架状态
+
+- **Google Chrome**：1.0.0 已在 Chrome 网上应用店公开发布，可[安装 Team Checkout Link](https://chrome.google.com/webstore/detail/egjbpdjjmmmbnccbhhknnnimpbjhmdie)。
+- 其他浏览器商店的上架状态以各自商店页面为准；确认发布后再补充对应链接。
+
 ## Chromium 浏览器安装
 
 1. 打开扩展管理页：
