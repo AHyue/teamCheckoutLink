@@ -20,7 +20,7 @@ Safari 的 WebExtension 需要使用 Xcode 转换、签名和安装，本项目�
 
 ## 商店上架状态
 
-- **Google Chrome**：1.0.0 已在 Chrome 网上应用店公开发布，可[安装 Team Checkout Link](https://chrome.google.com/webstore/detail/egjbpdjjmmmbnccbhhknnnimpbjhmdie)。
+- **Google Chrome**：1.0.0 已在 Chrome 网上应用店公开发布，可<a href="https://chrome.google.com/webstore/detail/egjbpdjjmmmbnccbhhknnnimpbjhmdie" target="_blank" rel="noopener noreferrer">安装 Team Checkout Link</a>。
 - 其他浏览器商店的上架状态以各自商店页面为准；确认发布后再补充对应链接。
 
 ## Chromium 浏览器安装
