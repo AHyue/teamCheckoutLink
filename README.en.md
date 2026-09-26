@@ -23,6 +23,7 @@ Safari is not currently packaged. Its WebExtension requires conversion, signing,
 ## Store availability
 
 - **Google Chrome**: Version 1.0.0 is publicly available in the [Chrome Web Store](https://chrome.google.com/webstore/detail/egjbpdjjmmmbnccbhhknnnimpbjhmdie).
+- **Mozilla Firefox**: Version 1.0.0 is publicly available on [Firefox Add-ons](https://addons.mozilla.org/addon/team-checkout-link/).
 - Other browser-store availability will be listed here once each publication is confirmed.
 
 ## Install

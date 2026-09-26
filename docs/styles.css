@@ -114,6 +114,7 @@ button { font: inherit; }
 
 .closing-cta { background: linear-gradient(110deg, #294da9, #4268cf 58%, #5578dc); color: #fff; }
 .closing-inner { display: flex; min-height: 185px; align-items: center; justify-content: space-between; gap: 30px; }
+.closing-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .closing-inner .eyebrow { margin-bottom: 10px; color: #d5e0ff; }
 .closing-inner h2 { font-size: 27px; }
 .button-light { background: #fff; box-shadow: 0 8px 20px rgb(14 33 87 / 17%); color: #2c50b2; }

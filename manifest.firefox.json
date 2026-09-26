@@ -45,7 +45,16 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "strict_min_version": "109.0"
+      "id": "teamcheckoutlink@ahyue.github.io",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": [
+          "authenticationInfo",
+          "locationInfo",
+          "websiteContent"
+        ],
+        "optional": []
+      }
     }
   }
 }
